@@ -1,7 +1,7 @@
 # Notice_bot
 This is a basic telegram bot , you can deploy this bot on your server
 ```bash
-git clone https://github.com/GaganHonor/Notice_bot/
+git clone https://github.com/GaganHonor/New_Noticebot/
 cd Notice_bot
 pip install -r requirements.txt
 python3 bot.py
