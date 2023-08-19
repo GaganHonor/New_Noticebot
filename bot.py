@@ -107,7 +107,7 @@ def main():
         dispatcher = updater.dispatcher
         start_handler = CommandHandler("start", start_command)
         set_value_handler = CommandHandler("setvalue", set_value_command)
-      def main():
+def main():
     for token in BOT_TOKENS:
         bot = telegram.Bot(token=token)
         updater = Updater(bot.token, use_context=True)
