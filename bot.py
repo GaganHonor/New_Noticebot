@@ -1,6 +1,6 @@
 import asyncio
 import logging
-
+import aiogram
 from aiogram import Bot, Dispatcher, exceptions
 
 BOT_TOKENS = [
@@ -23,12 +23,13 @@ async def send_message(bot: Bot, user_id: int, message: str):
 async def main():
     for token in BOT_TOKENS:
         bot = Bot(token=token)
-        dp = Dispatcher(bot)
+        dp = [Dispatcher](https://www.google.com/search?q=Dispatcher)()  # Remove the 'bot' argument from Dispatcher initialization
 
         @dp.message_handler()
         async def message_handler(message: aiogram.types.Message):
             await send_message(bot, message.chat.id, MESSAGE)
 
+        dp.register_message_handler(message_handler)
         await dp.start_polling()
 
 if __name__ == "__main__":
