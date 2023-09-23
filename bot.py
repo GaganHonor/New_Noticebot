@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import aiogram
-from aiogram import Bot, Dispatcher, exceptions
+from aiogram import Bot, Dispatcher, types
 
 BOT_TOKENS = [
     "6337536275:AAFZ2PAb0lni9xZlHPIiloWpqarFZ8L4bjY",
@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 async def send_message(bot: Bot, user_id: int, message: str):
     try:
         await bot.send_message(chat_id=user_id, text=message)
-    except exceptions.BotBlocked:
+    except types.BotBlocked:
         logging.info(f"User {user_id} has blocked the bot")
     except Exception as e:
         logging.error(e)
@@ -23,10 +23,10 @@ async def send_message(bot: Bot, user_id: int, message: str):
 async def main():
     for token in BOT_TOKENS:
         bot = Bot(token=token)
-        dp = Dispatcher()  # Remove the 'bot' argument from Dispatcher initialization
+        dp = Dispatcher(bot)
 
         @dp.message_handler()
-        async def message_handler(message: aiogram.types.Message):
+        async def message_handler(message: types.Message):
             await send_message(bot, message.chat.id, MESSAGE)
 
         dp.register_message_handler(message_handler)
