@@ -6,7 +6,8 @@ from telegram import ChatAction
 import time
 
 BOT_TOKENS = [
-    "6471805700:AAE9mRDkGRVVIcJJzRgBUzUTd8buHGcFTwg"
+    "6253669210:AAGiUM6kodf9CPuIEXnCpkJ6geJRuwpRQhw",
+    "6337536275:AAFZ2PAb0lni9xZlHPIiloWpqarFZ8L4bjY"
 ]
 
 
@@ -22,7 +23,7 @@ def start_command(update: Update, context: CallbackContext):
 
     context.bot.send_message(
     chat_id=user_id,
-    text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress... 🪲 \n Try again later..  \n ~ Team AOC ( DEVS ) "
+    text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress... 🪲 \nTry again later..  \n ~ Team AOC ( DEVS ) "
         )
 
         # Send the image along with the message
