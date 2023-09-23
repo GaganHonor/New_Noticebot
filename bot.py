@@ -1,19 +1,31 @@
-import aiogram
 import asyncio
+import logging
 
-bot = aiogram.Bot(token="6253669210:AAGiUM6kodf9CPuIEXnCpkJ6geJRuwpRQhw")
-dp = aiogram.Dispatcher(bot)
+from aiogram import Bot, Dispatcher, exceptions
 
+BOT_TOKENS = [
+    "6337536275:AAFZ2PAb0lni9xZlHPIiloWpqarFZ8L4bjY",
+    "6253669210:AAGiUM6kodf9CPuIEXnCpkJ6geJRuwpRQhw",
+]
 
-@dp.message_handler(commands="start")
-async def start_command(message: aiogram.types.Message):
-    """Send a text message on `/start`."""
+MESSAGE = "Sorry, {first_name} for the inconvenience! Global maintenance is in progress... 🪲\nTry again later..\n~ Team AOC (DEVS)"
 
-    first_name = message.from_user.first_name
-    await message.reply(
-        f"Sorry, {first_name} for the inconvenience! Global maintenance is in progress... 🪲\nTry again later..\n~ Team AOC (DEVS)"
-    )
+async def send_message(bot: Bot, user_id: int, message: str):
+    try:
+        await bot.send_message(chat_id=user_id, text=message)
+    except exceptions.BotBlocked:
+        logging.info(f"User {user_id} has blocked the bot")
 
+async def main():
+    for token in BOT_TOKENS:
+        bot = Bot(token=token)
+        dp = Dispatcher(bot)
+
+        @dp.message_handler()
+        async def message_handler(message: aiogram.types.Message):
+            await send_message(bot, message.chat.id, MESSAGE)
+
+        await dp.start_polling()
 
 if __name__ == "__main__":
-    asyncio.run(dp.start_polling())
+    asyncio.run(main())
