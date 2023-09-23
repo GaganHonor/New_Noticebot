@@ -22,7 +22,7 @@ def start_command(update: Update, context: CallbackContext):
 
     context.bot.send_message(
     chat_id=user_id,
-    text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress...  \n  Try again later.. "
+    text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress... 🪲 \n Try again later..  \n ~ Team AOC ( DEVS ) "
         )
 
         # Send the image along with the message
