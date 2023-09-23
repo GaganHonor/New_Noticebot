@@ -6,7 +6,7 @@ from telegram import ChatAction
 import time
 
 BOT_TOKENS = [
-    "6253669210:AAGiUM6kodf9CPuIEXnCpkJ6geJRuwpRQhw",
+    "6253669210:AAGiUM6kodf9CPuIEXnCpkJ6geJRuwpRQhw"
     "6337536275:AAFZ2PAb0lni9xZlHPIiloWpqarFZ8L4bjY"
 ]
 
