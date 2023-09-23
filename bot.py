@@ -23,7 +23,7 @@ async def send_message(bot: Bot, user_id: int, message: str):
 async def main():
     for token in BOT_TOKENS:
         bot = Bot(token=token)
-        dp = [Dispatcher](https://www.google.com/search?q=Dispatcher)()  # Remove the 'bot' argument from Dispatcher initialization
+        dp = Dispatcher()  # Remove the 'bot' argument from Dispatcher initialization
 
         @dp.message_handler()
         async def message_handler(message: aiogram.types.Message):
