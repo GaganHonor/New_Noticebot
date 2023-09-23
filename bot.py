@@ -17,20 +17,20 @@ def start_command(update: Update, context: CallbackContext):
     last_name = update.message.from_user.last_name
         
         # Show typing animation
-        context.bot.send_chat_action(chat_id=user_id, action=ChatAction.TYPING)
-        time.sleep(2)  # Simulate loading time
+    context.bot.send_chat_action(chat_id=user_id, action=ChatAction.TYPING)
+    time.sleep(2)  # Simulate loading time
 
-        context.bot.send_message(
-            chat_id=user_id,
-            text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress...  \n  Try again later.. "
+    context.bot.send_message(
+    chat_id=user_id,
+    text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress...  \n  Try again later.. "
         )
 
         # Send the image along with the message
-        context.bot.send_chat_action(chat_id=user_id, action=ChatAction.UPLOAD_PHOTO)
-        time.sleep(2)  # Simulate loading time
-        context.bot.send_photo(
-            chat_id=user_id,
-            photo=open("/home/admin/notice/New_Noticebot/image.jpeg", "rb")
+    context.bot.send_chat_action(chat_id=user_id, action=ChatAction.UPLOAD_PHOTO)
+    time.sleep(2)  # Simulate loading time
+    context.bot.send_photo(
+    chat_id=user_id,
+    photo=open("/home/admin/notice/New_Noticebot/image.jpeg", "rb")
         )
 
     context.user_data["last_command"] = "start"
