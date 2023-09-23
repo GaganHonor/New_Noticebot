@@ -42,14 +42,7 @@ def start_command(update: Update, context: CallbackContext):
         text=f"Sorry, {first_name} for the inconvenience! Global maintenance is in progress... 🪲\nTry again later..\n~ Team AOC (DEVS)",
     )
 
-    # Send the image along with the message
-    context.bot.send_chat_action(chat_id=user_id, action=ChatAction.UPLOAD_PHOTO)
-    time.sleep(2)  # Simulate loading time
-    context.bot.send_photo(
-        chat_id=user_id,
-        photo=open("/home/admin/notice/New_Noticebot/image.jpeg", "rb"),
-    )
-
+  
     context.user_data["last_command"] = "start"
 
 
