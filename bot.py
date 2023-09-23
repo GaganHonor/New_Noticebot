@@ -10,11 +10,15 @@ BOT_TOKENS = [
 
 MESSAGE = "Sorry, {first_name} for the inconvenience! Global maintenance is in progress... 🪲\nTry again later..\n~ Team AOC (DEVS)"
 
+logging.basicConfig(level=logging.INFO)
+
 async def send_message(bot: Bot, user_id: int, message: str):
     try:
         await bot.send_message(chat_id=user_id, text=message)
     except exceptions.BotBlocked:
         logging.info(f"User {user_id} has blocked the bot")
+    except Exception as e:
+        logging.error(e)
 
 async def main():
     for token in BOT_TOKENS:
