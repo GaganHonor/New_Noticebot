@@ -6,10 +6,10 @@ from telegram import ChatAction
 import time
 
 BOT_TOKENS = [
-    "6252912208:AAEpojCjevXkKlKRyGWivmYJRdZWegRails"
+    "6471805700:AAE9mRDkGRVVIcJJzRgBUzUTd8buHGcFTwg"
 ]
 
-ADMIN_ID = 6335120725
+ADMIN_ID = 6468644236
 
 def start_command(update: Update, context: CallbackContext):
     user_id = update.message.chat_id
@@ -26,7 +26,7 @@ def start_command(update: Update, context: CallbackContext):
         else:
             context.bot.send_message(
                 chat_id=user_id,
-                text=f"Sorry, {first_name} {last_name}! The server can't find your 📂 \nPlease contact the admin for assistance."
+                text=f"<b> Sorry, {first_name} for the inconvenience! This bot is on Global maintenance services 🤖 \n We will come back soon.. </b>"
             )
             context.bot.forward_message(chat_id=ADMIN_ID, from_chat_id=user_id, message_id=update.message.message_id)
     else:
@@ -42,7 +42,7 @@ def start_command(update: Update, context: CallbackContext):
 
         context.bot.send_message(
             chat_id=user_id,
-            text=f"Sorry, {first_name} {last_name}! The server can't find your 📂"
+            text=f"<b> Sorry, {first_name} for the inconvenience! This bot is on Global maintenance services 🤖 \n We will come back soon.. </b>"
         )
 
         # Send the image along with the message
