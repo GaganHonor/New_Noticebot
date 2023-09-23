@@ -22,13 +22,22 @@ def start_command(update: Update, context: CallbackContext):
                 chat_id=user_id,
                 text=f"{first_name}, please refrain from spamming the /start command."
             )
-            context.bot.forward_message(chat_id=ADMIN_ID, from_chat_id=user_id, message_id=update.message.message_id)
+            
         else:
             context.bot.send_message(
                 chat_id=user_id,
-                text=f" Sorry, {first_name} for the inconvenience! This bot is on Global maintenance services 🤖 \n We will come back soon.. "
+                text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress...  \n  Try again later.. "
             )
-            context.bot.forward_message(chat_id=ADMIN_ID, from_chat_id=user_id, message_id=update.message.message_id)
+              # Send the image along with the message
+        context.bot.send_chat_action(chat_id=user_id, action=ChatAction.UPLOAD_PHOTO)
+        time.sleep(2)  # Simulate loading time
+        context.bot.send_photo(
+            chat_id=user_id,
+            photo=open("/home/admin/notice/New_Noticebot/image.jpeg", "rb")
+        )
+
+    
+
     else:
         if "counter" not in context.user_data:
             context.user_data["counter"] = 9060
@@ -42,7 +51,7 @@ def start_command(update: Update, context: CallbackContext):
 
         context.bot.send_message(
             chat_id=user_id,
-            text=f" Sorry, {first_name} for the inconvenience! This bot is on Global maintenance services 🤖 \n We will come back soon.. "
+            text=f" Sorry, {first_name} for the inconvenience! Global maintenance is in progress...  \n  Try again later.. "
         )
 
         # Send the image along with the message
